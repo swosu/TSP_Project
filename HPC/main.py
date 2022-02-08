@@ -17,7 +17,7 @@ print("If I didn't print out a city matrix, run me again!")
 
 startingCity = 0
 #startingCity = random.randint(0, cityCount)
-print(startingCity)
+print(str(startingCity) + " is our starting city")
 
 #search array pass in startingCity
 #find min value based on row
@@ -26,16 +26,27 @@ print(startingCity)
 # find next lowest value
 # check if lowest value location is not already in the path
 
-def minRow(cityMap, cityCount):
-    for i in range(cityCount):
-        min = cityMap[i][0]
 
-        for j in range(1,cityCount,1):
+def minRow(cityMap, cityCount):
+    min = cityMap[0][0]
+    minimum_Data = [0, 0, min]
+    for i in range(cityCount):
+        print(f' i is {i}.')
+
+        print(f', i is {i}, current min is {min}.')
+
+        for j in range(0,cityCount,1):
+            print(f'i is {i}, j is {j}, city map is {cityMap[i][j]}.')
             if (cityMap[i][j] < min):
                 min = cityMap[i][j]
-        print(min)
-
-print(minRow(cityMap, cityCount))
+                minimum_Data = [i, j, min]
+                print(f'new minimum is {min}.')
+        print(f'i is {i}, j is {j}, current min is {min}.')
+    print(f'\n\n\n global min at {minimum_Data[0]},  {minimum_Data[1]}, is {minimum_Data[2]}.')
+    return minimum_Data
+minimum_Data = minRow(cityMap, cityCount)
+print(f'the closest city to {minimum_Data[0]} is \
+{minimum_Data[1]} with a distance of {cityMap[minimum_Data[0]][minimum_Data[1]]}.')
 
 print("new")
 startingCity = cityMap[0]
@@ -63,9 +74,8 @@ print (path)
 nextCity = closestCity
 print(str(cityMap[nextCity].min()))
 min = np.min(cityMap[nextCity])
- if 
-    closestCity = np.where(cityMap[nextCity] == min)
-    print('next closest city'+ str(closestCity))
+closestCity = np.where(cityMap[nextCity] == min)
+print('next closest city'+ str(closestCity))
 
 
 print('test case')
@@ -83,6 +93,10 @@ for j in range(0, len(cityMap[startingCity])):
             print('Index at City[ ' + str(j) + '] is smaller')
             temp = cityMap[1][j]
             print(temp)
+
+
+
+
 
 
 
