@@ -2,7 +2,7 @@ class Map_handler:
     def __init__(self):
         self.data = []
         self.file_name = ''
-        self.distance_matrix = []
+        self.distance_table = []
 
     def say_hello(self):
         #self.say_hello()
@@ -17,14 +17,14 @@ class Map_handler:
         import random
         print("We are going to build a distance table for", city_count, "cities.")
         rows, cols = (city_count, city_count)
-        distance_table = [[0 for i in range(cols)] for j in range(rows)]
+        self.distance_table = [[0 for i in range(cols)] for j in range(rows)]
 
         for rowIndex in range(rows):
             for columnIndex in range(cols):
-                distance_table[rowIndex][columnIndex] = random.randint(10,99)
+                self.distance_table[rowIndex][columnIndex] = random.randint(10,99)
 
-        print(distance_table)
-        np.array(distance_table).tofile(file_name)
+        print(self.distance_table)
+        np.array(self.distance_table).tofile(file_name)
 
     def load_map(self, city_count):
         import os.path
@@ -38,10 +38,10 @@ class Map_handler:
         print("We want to open file:", file_name)
         if(path.exists(file_name)):
             print ("File exists")
-            distance_table = np.fromfile(file_name,  dtype=np.int, count = -1)
-            distance_table = np.reshape(distance_table,(city_count,city_count))
-            print(distance_table)
-            return distance_table
+            self.distance_table = np.fromfile(file_name,  dtype=np.int, count = -1)
+            self.distance_table = np.reshape(self.distance_table,(city_count,city_count))
+            print(self.distance_table)
+            #return distance_table
         else:
             print("File does not exist")
             print("Building distance table.")
