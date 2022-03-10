@@ -1,7 +1,7 @@
 print('Hello.')
 from Map_handler import Map_handler
 
-city_count = 6
+city_count = 9
 print(f'City count is {city_count}.')
 
 print('Load map')
