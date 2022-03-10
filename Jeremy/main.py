@@ -7,11 +7,13 @@ city_count = 9
 print(f'City count is {city_count}.')
 
 print('Load map')
-map_handler_object = Map_handler()
-map_handler_object.load_map(city_count)
+map_handler_object = Map_handler(city_count)
+map_handler_object.load_map()
 
 print('Generate path')
 guess_and_check_path_finder = Guess_and_Check_Path_Finder(city_count)
 guess_and_check_path_finder.find_path()
 
 print('Get path distance')
+path_distance = map_handler_object.get_path_distance(guess_and_check_path_finder.get_path())
+print(f'our path distance was: {path_distance}.')
