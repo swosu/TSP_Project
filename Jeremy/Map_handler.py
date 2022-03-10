@@ -6,13 +6,13 @@ class Map_handler:
         self.city_count = city_count
 
     def get_path_distance(self, path):
-        print(f'working with path: \n {path}.')
+        #print(f'working with path: \n {path}.')
         total_distance = 0
         for index in range(0, self.city_count - 1):
             from_city = path[index]
             to_city = path[index + 1]
             distance_between_cities = self.distance_table[from_city][to_city]
-            print(f'from city {from_city} to city {to_city} is {distance_between_cities}.')
+            #print(f'from city {from_city} to city {to_city} is {distance_between_cities}.')
             total_distance = total_distance + distance_between_cities
         return total_distance
 

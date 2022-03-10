@@ -7,6 +7,27 @@ class Guess_and_Check_Path_Finder:
         self.distance_table = []
         self.path = []
 
+    def run_guess_and_check_algorithm(self, map_handler_object, time_limit_in_seconds):
+        import time
+        self.path = []
+        self.find_path()
+        min_path_distance = map_handler_object.get_path_distance(self.path)
+        min_path = list(self.path)
+        print(f'current min {min_path_distance}. {min_path}')
+        tic = time.perf_counter()
+        toc = time.perf_counter()
+        while time_limit_in_seconds > (toc - tic):
+            self.path = []
+            self.find_path()
+            current_path_distance = map_handler_object.get_path_distance(self.path)
+            if current_path_distance < min_path_distance :
+                min_path_distance = current_path_distance
+                min_path = list(self.path)
+                print(f'new min {min_path_distance}. {min_path}')
+            toc = time.perf_counter()
+
+
+
     def say_hello(self):
         #self.say_hello()
         print('So that worked...')
